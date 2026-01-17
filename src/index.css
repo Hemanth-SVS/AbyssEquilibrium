@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Abyss Equilibrium Design System
+   Deep ocean theme with bioluminescent accents
+   All colors in HSL format
+*/
+
+@layer base {
+  :root {
+    /* Core ocean palette */
+    --background: 210 50% 6%;
+    --foreground: 190 30% 90%;
+
+    --card: 210 45% 10%;
+    --card-foreground: 190 30% 90%;
+
+    --popover: 210 45% 10%;
+    --popover-foreground: 190 30% 90%;
+
+    /* Bioluminescent cyan as primary */
+    --primary: 180 100% 50%;
+    --primary-foreground: 210 50% 6%;
+
+    /* Muted ocean depths */
+    --secondary: 210 35% 15%;
+    --secondary-foreground: 190 30% 85%;
+
+    --muted: 210 30% 18%;
+    --muted-foreground: 200 20% 55%;
+
+    /* Subtle accent */
+    --accent: 200 40% 20%;
+    --accent-foreground: 180 80% 70%;
+
+    /* Warning/danger - pollution red */
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 30% 20%;
+    --input: 210 30% 20%;
+    --ring: 180 100% 50%;
+
+    --radius: 0.5rem;
+
+    /* Custom game colors */
+    --abyss: 210 50% 6%;
+    --abyss-deep: 220 60% 4%;
+    --bioluminescent: 180 100% 50%;
+    --bioluminescent-glow: 175 90% 60%;
+    --pollution: 0 60% 45%;
+    --sanctuary: 160 70% 45%;
+    --apex: 0 50% 35%;
+
+    /* Sidebar - not used but keeping for compatibility */
+    --sidebar-background: 210 50% 8%;
+    --sidebar-foreground: 190 30% 85%;
+    --sidebar-primary: 180 100% 50%;
+    --sidebar-primary-foreground: 210 50% 6%;
+    --sidebar-accent: 210 35% 15%;
+    --sidebar-accent-foreground: 190 30% 85%;
+    --sidebar-border: 210 30% 20%;
+    --sidebar-ring: 180 100% 50%;
+  }
+
+  .dark {
+    /* Dark mode is the default for this game */
+    --background: 210 50% 6%;
+    --foreground: 190 30% 90%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  /* Game container */
+  .game-container {
+    @apply w-full h-full overflow-hidden;
+  }
+
+  /* Keyboard hints */
+  .kbd {
+    @apply inline-block px-2 py-1 rounded text-xs font-mono;
+    background: hsl(var(--secondary));
+    border: 1px solid hsl(var(--border));
+    color: hsl(var(--bioluminescent));
+  }
+}
+
+@layer utilities {
+  /* Bioluminescent glow effect */
+  .glow {
+    text-shadow: 0 0 10px hsl(var(--bioluminescent) / 0.8),
+                 0 0 20px hsl(var(--bioluminescent) / 0.6),
+                 0 0 40px hsl(var(--bioluminescent) / 0.4);
+  }
+
+  /* Floating animation for particles */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) translateX(0);
+      opacity: 0.3;
+    }
+    50% {
+      transform: translateY(-20px) translateX(10px);
+      opacity: 0.6;
+    }
+  }
+
+  .animate-float {
+    animation: float 5s ease-in-out infinite;
+  }
+
+  /* Glow pulse animation */
+  @keyframes glow-pulse {
+    0%, 100% {
+      text-shadow: 0 0 10px hsl(var(--bioluminescent) / 0.8),
+                   0 0 20px hsl(var(--bioluminescent) / 0.6);
+    }
+    50% {
+      text-shadow: 0 0 20px hsl(var(--bioluminescent) / 1),
+                   0 0 40px hsl(var(--bioluminescent) / 0.8),
+                   0 0 60px hsl(var(--bioluminescent) / 0.4);
+    }
+  }
+
+  .animate-glow {
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+}
